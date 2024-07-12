@@ -4,11 +4,6 @@
 
 { config, pkgs, ... }:
 
-let
-  customGnome = pkgs.gnome3.override {
-    excludePackages = [ pkgs.gnome3.gnome-maps ];
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -38,15 +33,11 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME desktop environment
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Exclude specific packages from the GNOME desktop environment
-  environment.gnome.excludePackages = with pkgs; [
-    gnome3.gnome-maps
-  ];
-
-  # Configure keymap in X11
+   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "";
 
