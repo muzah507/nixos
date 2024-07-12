@@ -97,6 +97,7 @@ in
     pkgs.gnome-tweaks
     git
     gh
+    impression
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
